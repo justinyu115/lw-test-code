@@ -11,22 +11,22 @@ public class MainPage {
     private WebDriver driver;
 
     @FindBy(css="h2")
-    WebElement mainPageTitle;
+    private WebElement mainPageTitle;
 
     @FindBy(css="h4.subheader")
-    WebElement mainPageSubTitle;
+    private WebElement mainPageSubheader;
 
-    @FindBy(className="button secondary radius")
+    @FindBy(css="a.button.secondary.radius")
     private WebElement logoutButton;
 
     @FindBy(css="#flash.flash.error")
-    WebElement flashError;
+    private WebElement flashError;
 
     @FindBy(css="#flash.flash.success")
-    WebElement flashSuccess;
+    private WebElement flashSuccess;
 
     @FindBy(className="close")
-    WebElement flashClose;
+    private WebElement flashClose;
 
     /**
      * webdriver for main page
@@ -38,9 +38,69 @@ public class MainPage {
     }
 
     /**
+     * get main page title
+     * @return String
+     */
+    public String getMainPageTitle(){
+        return mainPageTitle.getText();
+    }
+
+    /**
+     * get main page subheader
+     * @return String
+     */
+    public String getMainPageSubheader(){
+        return mainPageSubheader.getText();
+    }
+
+    /**
      * click logout button
      */
     public void clickLogout(){
         logoutButton.click();
+    }
+
+    /**
+     * get logout button
+     * @return WebElement
+     */
+    public WebElement getLogoutButtonElement(){
+        return logoutButton;
+    }
+
+    /**
+     * Get flash success message text
+     * @return String
+     */
+    public String getFlashSuccessMsg(){
+        return flashSuccess.getText();
+    }
+
+    /**
+     * Get flash success element
+     * @return WebElement
+     */
+    public WebElement getFlashSuccessElement(){
+        return flashSuccess;
+    }
+
+    /**
+     * Get flash error message text
+     * @return String
+     */
+    public String getFlashErrorMsg(){
+        return flashError.getText();
+    }
+
+    /**
+     * Get flash error element
+     * @return WebElement
+     */
+    public WebElement getFlashErrorElement(){
+        return flashError;
+    }
+
+    public void clickCloseFlashMsg(){
+        flashClose.click();
     }
 }

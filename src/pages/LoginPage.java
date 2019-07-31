@@ -32,13 +32,13 @@ public class LoginPage {
     private WebElement loginButton;
 
     @FindBy(css="#flash.flash.error")
-    WebElement flashError;
+    private WebElement flashError;
 
     @FindBy(css="#flash.flash.success")
-    WebElement flashSuccess;
+    private WebElement flashSuccess;
 
     @FindBy(className="close")
-    WebElement flashClose;
+    private WebElement flashClose;
 
     /**
      * webdriver for login page
@@ -89,6 +89,10 @@ public class LoginPage {
         return password;
     }
 
+    /**
+     * get login button
+     * @return WebElement
+     */
     public WebElement getLoginButtonElement(){
         return loginButton;
     }
@@ -130,9 +134,27 @@ public class LoginPage {
      * @param strPassword - password string
      */
     public void loginWithCreds(String strUsername, String strPassword){
+        username.clear();
+        password.clear();
         this.enterUsername(strUsername);
         this.enterPassword(strPassword);
         this.clickLogin();
+    }
+
+    /**
+     * Get flash success message text
+     * @return String
+     */
+    public String getFlashSuccessMsg(){
+        return flashSuccess.getText();
+    }
+
+    /**
+     * Get flash error message text
+     * @return String
+     */
+    public String getFlashErrorMsg(){
+        return flashError.getText();
     }
 }
 

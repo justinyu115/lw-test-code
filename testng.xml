@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Login Suite" thread-count="2" parallel="classes">
+    <test preserve-order="true" name="Login Success/Failure and Logout - Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="tests.LoginSuccessToMainPageTest" />
+            <class name="tests.LoginFailureToMainPageTest" />
+        </classes>
+    </test>
+    <test preserve-order="true" name="Login Success/Failure and Logout - Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="tests.LoginSuccessToMainPageTest" />
+            <class name="tests.LoginFailureToMainPageTest" />
+        </classes>
+    </test>
+</suite>
