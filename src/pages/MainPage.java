@@ -2,14 +2,11 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
+public class MainPage extends BasePage {
     /**
      * WebElements at /login
      */
-    private WebDriver driver;
-
     @FindBy(css="h2")
     private WebElement mainPageTitle;
 
@@ -28,25 +25,33 @@ public class MainPage {
     @FindBy(className="close")
     private WebElement flashClose;
 
+    private static final String url = "https://the-internet.herokuapp.com/secure";
+
     /**
-     * webdriver for main page
+     * Webdriver for main page
      * @param driver for Webdriver
      */
-    public MainPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public MainPage(WebDriver driver) {
+        super(driver);
     }
 
     /**
-     * get main page title
+     * Navigate to page url
+     */
+    public void openPage() {
+        super.openPage(url);
+    }
+
+    /**
+     * Get main page title
      * @return String
      */
-    public String getMainPageTitle(){
+    public String getMainPageTitle() {
         return mainPageTitle.getText();
     }
 
     /**
-     * get main page subheader
+     * Get main page subheader
      * @return String
      */
     public String getMainPageSubheader(){
@@ -54,14 +59,14 @@ public class MainPage {
     }
 
     /**
-     * click logout button
+     * Click logout button
      */
     public void clickLogout(){
         logoutButton.click();
     }
 
     /**
-     * get logout button
+     * Get logout button
      * @return WebElement
      */
     public WebElement getLogoutButtonElement(){

@@ -4,8 +4,8 @@
     <test preserve-order="true" name="Login Success/Failure and Logout - Firefox">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="tests.LoginSuccessToMainPageTest" />
-            <class name="tests.LoginFailureToMainPageTest" />
+            <class name="tests.LoginSuccessToMainPageTest"/>
+            <class name="tests.LoginFailureToMainPageTest"/>
         </classes>
     </test>
     <test preserve-order="true" name="Login Success/Failure and Logout - Chrome">

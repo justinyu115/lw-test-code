@@ -1,40 +1,30 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
 
-import java.util.concurrent.TimeUnit;
-
-public class LoginFailureToMainPageTest {
+public class LoginFailureToMainPageTest extends BaseTest {
     private WebDriver driver;
     private LoginPage driverLogin;
 
     @BeforeTest
     @Parameters("browser")
     public void setUp(String browser) {
-        //test with firefox browser
-        if (browser.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
-
-            //test with chrome browser
-        } else if (browser.equalsIgnoreCase("chrome")) {
-            driver = new ChromeDriver();
-        }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.navigate().to("https://the-internet.herokuapp.com/login");
+        super.setup(browser);
+        driver = super.getDriver();
+        driverLogin = new LoginPage(driver);
+        driverLogin.openPage();
     }
 
-    /**
-     * When I login with a wrong username:
+    /*
+     * When I login with a wrong username and password, wrong username, or wrong password:
      * username - "invalidUsername"
      * password - "SuperSecretPassword!"
-     * Then I should see a fail message
+     * Then I should see a flash error message
      */
-    @Test(priority = 1, dataProvider = "credentials")
+    @Test(priority = 1, dataProvider = "credentials", description = "Login failures")
     public void logInWithIncorrectCredentials(String username, String password) {
         driverLogin = new LoginPage(driver);
 
@@ -55,11 +45,13 @@ public class LoginFailureToMainPageTest {
         }
     }
 
+    //close browser and disconnect
     @AfterTest
-    protected void cleanup() {
-        driver.close();
+    public void cleanup() {
+        super.cleanup();
     }
 
+    //test credentials data
     @DataProvider(name = "credentials")
     public Object[][] getDataFromDataProvider() {
         return new Object[][]
