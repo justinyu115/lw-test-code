@@ -18,5 +18,7 @@ Clone the repository to a desired directory.
 
 The test requires Mozilla Firefox and Google Chrome browers, see version requirements above.
 
+You can import the project into an IDE (Eclipse, IntelliJ, etc.) and run `testng.xml`, or configure paths to run.
+
 
 
