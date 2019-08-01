@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.MainPage;
 
-public class LoginSuccessToMainPageTest extends BaseTest {
+public class TestLoginSuccessToMainPage extends BaseTest {
     private WebDriver driver;
     private LoginPage driverLogin;
     private MainPage driverMain;

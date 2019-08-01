@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
 
-public class LoginFailureToMainPageTest extends BaseTest {
+public class TestLoginFailureToMainPage extends BaseTest {
     private WebDriver driver;
     private LoginPage driverLogin;
 
